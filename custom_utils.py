@@ -168,7 +168,7 @@ def create_txt(with_rips_path, no_rip_path, target_path, train_percent, specific
             for img in train_list:
                 f.write(img+"\n")
         with open(os.path.join(target_path, 'val.txt'), 'w') as f:
-            for img in train_list:
+            for img in val_list:
                 f.write(img+"\n")
     else:
         l = [specific_img] * N
