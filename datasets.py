@@ -15,7 +15,10 @@ class RipDetectorDataset(Dataset):
         my_file = open(img_txt, "r")
         data = my_file.read()
         self.img_list = data.replace('\n', ' ').split(" ")[:-1]
-        self.labels_df = pd.read_csv(labels_csv)
+        labels_df = pd.read_csv(labels_csv)
+        labels_df = labels_df.drop(labels_df.index[339, 1081])
+        labels_df = labels_df.drop(labels_df.index[1081])
+        self.labels_df = labels_df.drop_duplicates(subset=['Name'])
         self.img_height = height
         self.img_width = width
         self.cls = classes
